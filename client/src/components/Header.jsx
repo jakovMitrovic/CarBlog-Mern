@@ -25,9 +25,9 @@ const Header = () => {
 
   const menu = () =>{
     setIsActive(!isActive)
-    setTimeout(()=>{
-      setIsActive(false)
-    }, "10000")
+    // setTimeout(()=>{
+    //   setIsActive(false)
+    // }, "10000")
   }
 
   return (
@@ -37,14 +37,14 @@ const Header = () => {
       <nav>
         {username && (
           <>
-            <Link to='/create'>Create new post</Link>
-            <button className='nav-btn' onClick={() =>menu()}>{username}</button>
             {isActive && (
               <div className='nav-menu'>
                 <a onClick={logout} className='usernameLink' href='/'>Log out</a>
                 <Link to={`/user/${userInfo.id}`}>My Posts</Link>
               </div>
             )}
+            <button className='nav-btn' onClick={() =>menu()}>{username}</button>
+            <Link to='/create'>Create new post</Link>
           </>
         )}
         {!username && (

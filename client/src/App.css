@@ -348,14 +348,16 @@ p{
 
 .userPostsTitle h1{
   font-size: 5vh;
+  margin-top: 0;
+  color: #ff6d6ded;
 }
 
 @keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-30%);
-  }
   100% {
-    transform: translateX(0);
+    transform: translateX(0%);
+  }
+  0% {
+    transform: translateX(20%);
   }
 }
 
@@ -366,7 +368,7 @@ p{
 
   display: flex;
   gap: 15px;
-  animation: 1s ease-out 0s 1 slideInFromLeft;
+  animation: 0.5s ease-out 0s 1 slideInFromLeft;
 }
 .nav-menu a:hover{
   color: #b3b3b3;
@@ -386,4 +388,32 @@ p{
 
 
 
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message{
+  text-align: center;
+  color: red;
+  font-size: x-large;
+}
 

@@ -23,17 +23,22 @@ const CreateBlogPost = () => {
   const [description, setDescription] = useState('')
   const [content, setContent] = useState('')
   const [file, setFile] = useState('')
+  const [message, setMessage] = useState('')
   const navigate = useNavigate()
 
 
   const handleSubit = async (ev) => {
+    setMessage("")
     const data = new FormData();
     data.set('title', title)
     data.set('description', description)
     data.set('content', content)
     data.set('file', file[0])
     ev.preventDefault();
-    console.log(file)
+    if(title === '' && description === '' && content === '' && file === ''){
+      setMessage("Fill in every field")
+      return
+    }
     const res = await fetch('http://localhost:4000/blogpost', {
       method: 'POST',
       body: data,
@@ -62,6 +67,7 @@ const CreateBlogPost = () => {
         </label>
         <ReactQuill className='contentInput' value={content} modules={modules} formats={formats} onChange={newValue => setContent(newValue)} />
         <br />
+      <p className='error-message'>{message}</p>  
         <button type='submit'>Create Post</button>
       </form>
     </>

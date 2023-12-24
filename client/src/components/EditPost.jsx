@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
  import { UserContext } from './UserContext';
+ import Loading from './Loading';
 
 const modules = {
   toolbar: [
@@ -66,6 +67,7 @@ const navigate = useNavigate()
   }
   return (
     <>
+      {title === '' && (<Loading />)}
       <h1 className='createBlogTitle'>Edit Post</h1>
       <form className='createForm' onSubmit={handleSubit}>
         <input type='text' placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />

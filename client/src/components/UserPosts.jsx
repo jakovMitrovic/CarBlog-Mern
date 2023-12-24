@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from './UserContext'
 import { useParams } from 'react-router-dom'
 import BlogPost from './BlogPost'
+import Loading from './Loading'
 
 const UserProfile = () => {
     const {userInfo} = useContext(UserContext)
@@ -19,9 +20,10 @@ const UserProfile = () => {
   
   return (
     <>
+    {posts.length === 0 && (<Loading />)}
     <div className='userPostsTitle'>
-    <h2>Posts by: </h2>
     <h1 >{user?.username}</h1>
+    <h2>Posted: </h2>
     </div>
     {posts?.map((post)=>(
       <BlogPost key={post._id} id={post._id} img={post.cover} title={post.title} author={post.author} desc={post.description} />
